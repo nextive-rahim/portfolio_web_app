@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final PageStorageBucket bucket = PageStorageBucket();
     return MaterialApp(
-      title: 'My Portfolio',
+      title: 'Abdul Rahim',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
