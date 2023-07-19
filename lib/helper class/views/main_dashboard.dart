@@ -57,6 +57,10 @@ class _MainDashBoardState extends State<MainDashBoard> {
   }
 
   final yourScrollController = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,12 +110,13 @@ class _MainDashBoardState extends State<MainDashBoard> {
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text('Portfolio'),
+                  const Text('Abdul Rahim'),
                   const Spacer(),
                   SizedBox(
                     height: 30,
                     child: ListView.separated(
                       itemCount: menuItems.length,
+                      controller: yourScrollController,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, child) =>
@@ -144,24 +149,22 @@ class _MainDashBoardState extends State<MainDashBoard> {
           },
         ),
       ),
-      body: Scrollbar(
-        trackVisibility: true,
-        thumbVisibility: true,
-        thickness: 8,
-        interactive: true,
-        controller: yourScrollController,
-        child: ListView.builder(
-          itemCount: screensList.length,
-          controller: yourScrollController,
-          itemBuilder: (context, index) {
-            return screensList[index];
-          },
-        ),
+      body: ScrollablePositionedList.builder(
+        itemCount: screensList.length,
+        itemScrollController: _itemScrollController,
+        itemPositionsListener: itemPositionsListener,
+        scrollOffsetListener: scrollOffsetListener,
+        itemBuilder: (context, index) {
+          return screensList[index];
+        },
       ),
     );
   }
 
-  AnimatedContainer buildNavBarAnimatedContainer(int index, bool hover) {
+  AnimatedContainer buildNavBarAnimatedContainer(
+    int index,
+    bool hover,
+  ) {
     return AnimatedContainer(
       alignment: Alignment.center,
       width: hover ? 80 : 75,
@@ -170,7 +173,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
       child: Text(
         menuItems[index],
         style: AppTextStyles.headerTextStyle(
-            color: hover ? AppColors.themeColor : AppColors.white),
+          color: hover ? AppColors.themeColor : AppColors.white,
+        ),
       ),
     );
   }

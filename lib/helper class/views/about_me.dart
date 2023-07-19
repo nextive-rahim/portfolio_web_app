@@ -1,5 +1,3 @@
-
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/globals/app_assets.dart';
@@ -48,7 +46,7 @@ class AboutMe extends StatelessWidget {
     return FadeInRight(
       duration: const Duration(milliseconds: 1200),
       child: Image.asset(
-        AppAssets.profile2,
+        AppAssets.profile1,
         height: 450,
         width: 400,
       ),

@@ -21,7 +21,7 @@ class _ProfileAnimationState extends State<ProfileAnimation>
         AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..repeat(reverse: true);
 
-    _animation = Tween(begin: const Offset(0,0.05), end: const Offset(0, 0))
+    _animation = Tween(begin: const Offset(0, 0.05), end: const Offset(0, 0))
         .animate(_controller);
   }
 
@@ -35,10 +35,10 @@ class _ProfileAnimationState extends State<ProfileAnimation>
   Widget build(BuildContext context) {
     return SlideTransition(
       position: _animation,
-      child: Image.asset(
+      child: Image.asset( 
         AppAssets.profile1,
         width: 340,
-        height: 450,
+        height: 350,
         fit: BoxFit.fill,
       ),
     );

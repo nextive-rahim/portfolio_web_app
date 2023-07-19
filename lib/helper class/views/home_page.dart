@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/globals/app_assets.dart';
 import 'package:flutter_dev_portfolio/globals/app_buttons.dart';
@@ -8,6 +9,9 @@ import 'package:flutter_dev_portfolio/globals/app_text_styles.dart';
 import 'package:flutter_dev_portfolio/globals/constants.dart';
 import 'package:flutter_dev_portfolio/helper%20class/helper_class.dart';
 import 'package:flutter_dev_portfolio/widgets/profile_animation.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,14 +21,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final socialButtons = <String>[
-    AppAssets.facebook,
-    AppAssets.twitter,
-    AppAssets.linkedIn,
-    AppAssets.insta,
-    AppAssets.github,
-  ];
+  // final socialButtons = <String>[
+  //   AppAssets.facebook,
+  //   AppAssets.twitter,
+  //   AppAssets.linkedIn,
+  //   AppAssets.insta,
+  //   AppAssets.github,
+  // ];
+  Future<void> _launchUrl(String socialLink) async {
+    if (!await launchUrl(Uri.parse(socialLink))) {
+      throw Exception('Could not launch $socialLink');
+    }
+  }
 
+  List socialButtons = [
+    {
+      'icon': AppAssets.facebook,
+      'url': 'https://www.facebook.com/rahim.srrahim.3'
+    },
+    {
+      'icon': AppAssets.github,
+      'url': 'https://github.com/developer-rahim',
+    },
+    {
+      'icon': AppAssets.linkedIn,
+      'url': 'https://www.linkedin.com/in/rahim-sr-rahim-09068521b/',
+    },
+  ];
   var socialBI;
 
   @override
@@ -75,7 +98,7 @@ class _HomePageState extends State<HomePage> {
         FadeInRight(
           duration: const Duration(milliseconds: 1400),
           child: Text(
-            'Mukhtar Ali Khan',
+            'Abdul Rahim',
             style: AppTextStyles.headingStyles(),
           ),
         ),
@@ -91,16 +114,15 @@ class _HomePageState extends State<HomePage> {
               AnimatedTextKit(
                 animatedTexts: [
                   TyperAnimatedText(
+                    'Freelancer',
+                    textStyle:
+                        AppTextStyles.montserratStyle(color: Colors.lightBlue),
+                  ),
+                  TyperAnimatedText(
                     'Flutter Developer',
                     textStyle:
                         AppTextStyles.montserratStyle(color: Colors.lightBlue),
                   ),
-                  TyperAnimatedText('Freelancer',
-                      textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
-                  TyperAnimatedText('YouTuber',
-                      textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue))
                 ],
                 pause: const Duration(milliseconds: 1000),
                 displayFullTextOnTap: true,
@@ -113,9 +135,9 @@ class _HomePageState extends State<HomePage> {
         FadeInDown(
           duration: const Duration(milliseconds: 1600),
           child: Text(
-            'In publishing and graphic design, Lorem ipsum is a placeholder '
-            'text commonly used to demonstrate the visual form of a document'
-            ' or a typeface without relying on meaningful content.',
+            'Flutter developer with 1.5 years of experience .I have completed'
+            '\n many projects successfully. So have the self-belief'
+            ' to take on any challenge.',
             style: AppTextStyles.normalStyle(),
           ),
         ),
@@ -146,8 +168,11 @@ class _HomePageState extends State<HomePage> {
                   hoverColor: AppColors.themeColor,
                   splashColor: AppColors.lawGreen,
                   child: buildSocialButton(
-                      asset: socialButtons[index],
-                      hover: socialBI == index ? true : false),
+                      asset: socialButtons[index]['icon'],
+                      hover: socialBI == index ? true : false,
+                      onTap: () {
+                        _launchUrl(socialButtons[index]['url']);
+                      }),
                 );
               },
             ),
@@ -157,28 +182,45 @@ class _HomePageState extends State<HomePage> {
         FadeInUp(
           duration: const Duration(milliseconds: 1800),
           child: AppButtons.buildMaterialButton(
-              onTap: () {}, buttonName: 'Download CV'),
+              onTap: () async {
+                downloadFile(
+                    'https://drive.google.com/file/d/1DsCkBNSD586UQsEsog05QGLZ-NyLpR6o/view');
+              },
+              buttonName: 'Download CV'),
         ),
       ],
     );
   }
 
-  Ink buildSocialButton({required String asset, required bool hover}) {
-    return Ink(
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.themeColor, width: 2.0),
-        color: AppColors.bgColor,
-        shape: BoxShape.circle,
-      ),
-      padding: const EdgeInsets.all(6),
-      child: Image.asset(
-        asset,
-        width: 10,
-        height: 12,
-        color: hover ? AppColors.bgColor : AppColors.themeColor,
-        // fit: BoxFit.fill,
+  void downloadFile(String url) {
+    html.AnchorElement anchorElement = html.AnchorElement(href: url);
+    anchorElement.download = url;
+    anchorElement.click();
+  }
+
+  buildSocialButton({
+    required String asset,
+    required bool hover,
+    required void Function()? onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Ink(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.themeColor, width: 2.0),
+          color: AppColors.bgColor,
+          shape: BoxShape.circle,
+        ),
+        padding: const EdgeInsets.all(6),
+        child: Image.asset(
+          asset,
+          width: 10,
+          height: 12,
+          color: hover ? AppColors.bgColor : AppColors.themeColor,
+          // fit: BoxFit.fill,
+        ),
       ),
     );
   }
