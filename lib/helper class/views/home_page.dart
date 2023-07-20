@@ -133,9 +133,9 @@ class _HomePageState extends State<HomePage> {
         FadeInDown(
           duration: const Duration(milliseconds: 1600),
           child: Text(
-            'Flutter developer with 1.5 years of experience .I have completed'
-            '\n many projects successfully. So have the self-belief'
-            ' to take on any challenge.',
+            'Welcome to my portfolio—a showcase of my passion for creating beautiful, efficient, and engaging mobile applications.'
+            'I am Abdul Rahim, a dedicated and innovative Flutter developer with a strong background in designing and'
+            ' building cross-platform applications that delight users.',
             style: AppTextStyles.normalStyle(),
           ),
         ),
