@@ -28,8 +28,8 @@ class _ProfileAnimationState extends State<ProfileAnimation>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -27,15 +27,15 @@ class _ProfileAnimationState extends State<ProfileAnimation>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
       position: _animation,
-      child: Image.asset( 
+      child: Image.asset(
         AppAssets.profile1,
         width: 340,
         height: 350,
