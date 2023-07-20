@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/globals/app_assets.dart';
 import 'package:flutter_dev_portfolio/globals/app_buttons.dart';
@@ -9,7 +8,6 @@ import 'package:flutter_dev_portfolio/globals/app_text_styles.dart';
 import 'package:flutter_dev_portfolio/globals/constants.dart';
 import 'package:flutter_dev_portfolio/helper%20class/helper_class.dart';
 import 'package:flutter_dev_portfolio/widgets/profile_animation.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:html' as html;
 
@@ -219,7 +217,7 @@ class _HomePageState extends State<HomePage> {
           width: 10,
           height: 12,
           color: hover ? AppColors.bgColor : AppColors.themeColor,
-          // fit: BoxFit.fill,
+          fit: BoxFit.fill,
         ),
       ),
     );
