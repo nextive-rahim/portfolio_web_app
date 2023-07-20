@@ -7,8 +7,6 @@ import 'package:flutter_dev_portfolio/globals/app_text_styles.dart';
 import 'package:flutter_dev_portfolio/globals/constants.dart';
 import 'package:flutter_dev_portfolio/helper%20class/helper_class.dart';
 
-
-
 class MyServices extends StatefulWidget {
   const MyServices({Key? key}) : super(key: key);
 
@@ -21,7 +19,6 @@ class _MyServicesState extends State<MyServices> {
 
   final onHoverActive = Matrix4.identity()..translate(0, -10, 0);
   final onHoverRemove = Matrix4.identity()..translate(0, 0, 0);
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +38,7 @@ class _MyServicesState extends State<MyServices> {
             },
             child: buildAnimatedContainer(
               title: 'App Development',
-              asset: AppAssets.code,
+              asset: AppAssets.android,
               hover: isApp,
             ),
           ),
@@ -55,7 +52,7 @@ class _MyServicesState extends State<MyServices> {
             },
             child: buildAnimatedContainer(
               title: 'Graphic Designing',
-              asset: AppAssets.brush,
+              asset: AppAssets.apple,
               hover: isGraphic,
             ),
           ),
@@ -69,7 +66,7 @@ class _MyServicesState extends State<MyServices> {
             },
             child: buildAnimatedContainer(
               title: 'Digital Marketing',
-              asset: AppAssets.analyst,
+              asset: AppAssets.web,
               hover: isDataAnalyst,
             ),
           )
@@ -92,7 +89,7 @@ class _MyServicesState extends State<MyServices> {
                 },
                 child: buildAnimatedContainer(
                   title: 'App Development',
-                  asset: AppAssets.code,
+                  asset: AppAssets.android,
                   hover: isApp,
                 ),
               ),
@@ -106,7 +103,7 @@ class _MyServicesState extends State<MyServices> {
                 },
                 child: buildAnimatedContainer(
                   title: 'Graphic Designing',
-                  asset: AppAssets.brush,
+                  asset: AppAssets.apple,
                   hover: isGraphic,
                 ),
               ),
@@ -122,7 +119,7 @@ class _MyServicesState extends State<MyServices> {
             },
             child: buildAnimatedContainer(
               title: 'Digital Marketing',
-              asset: AppAssets.analyst,
+              asset: AppAssets.web,
               hover: isDataAnalyst,
               width: 725.0,
               hoverWidth: 735.0,
@@ -146,8 +143,8 @@ class _MyServicesState extends State<MyServices> {
                   });
                 },
                 child: buildAnimatedContainer(
-                  title: 'App Development',
-                  asset: AppAssets.code,
+                  title: 'Android App',
+                  asset: AppAssets.android,
                   hover: isApp,
                 ),
               ),
@@ -160,8 +157,8 @@ class _MyServicesState extends State<MyServices> {
                   });
                 },
                 child: buildAnimatedContainer(
-                  title: 'Graphic Designing',
-                  asset: AppAssets.brush,
+                  title: 'IOS App',
+                  asset: AppAssets.apple,
                   hover: isGraphic,
                 ),
               ),
@@ -174,8 +171,8 @@ class _MyServicesState extends State<MyServices> {
                   });
                 },
                 child: buildAnimatedContainer(
-                  title: 'Digital Marketing',
-                  asset: AppAssets.analyst,
+                  title: 'Web App',
+                  asset: AppAssets.web,
                   hover: isDataAnalyst,
                 ),
               )
@@ -220,12 +217,19 @@ class _MyServicesState extends State<MyServices> {
       height: hover ? 390 : 380,
       alignment: Alignment.center,
       transform: hover ? onHoverActive : onHoverRemove,
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 18,
+        vertical: 24,
+      ),
       decoration: BoxDecoration(
         color: AppColors.bgColor2,
         borderRadius: BorderRadius.circular(30),
-        border:
-            hover ? Border.all(color: AppColors.themeColor, width: 3) : null,
+        border: hover
+            ? Border.all(
+                color: AppColors.themeColor,
+                width: 3,
+              )
+            : null,
         boxShadow: const [
           BoxShadow(
             color: Colors.black54,
