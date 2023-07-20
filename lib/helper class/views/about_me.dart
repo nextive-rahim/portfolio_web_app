@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_portfolio/globals/app_assets.dart';
-import 'package:flutter_dev_portfolio/globals/app_buttons.dart';
 import 'package:flutter_dev_portfolio/globals/app_colors.dart';
 import 'package:flutter_dev_portfolio/globals/app_text_styles.dart';
 import 'package:flutter_dev_portfolio/globals/constants.dart';
@@ -86,22 +85,25 @@ class AboutMe extends StatelessWidget {
         FadeInLeft(
           duration: const Duration(milliseconds: 1600),
           child: Text(
-            'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-            ' The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,'
-            ' as opposed to using \'Content here, content here\', making it look like readable English.'
-            ' Many desktop publishing packages and web page editors now use Lorem Ipsum as their default'
-            ' model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy.'
-            ' Various versions have evolved over the years, sometimes by accident, sometimes on purpose'
-            ' (injected humour and the like).',
+            'Hello! My name is Abdul Rahim and i enjoy creating things that '
+            'live on the internet. My interest in flutter app development started back in 2022.'
+            'Here are a few tecnologies I'
+            '\'ve '
+            'been working with recently : '
+            '\n'
+            '\n 1. Flutter '
+            '                      2. Dart'
+            '\n 3. Firebase'
+            '                    4. Git & Github',
             style: AppTextStyles.normalStyle(),
           ),
         ),
         Constants.sizedBox(height: 15.0),
-        FadeInUp(
-          duration: const Duration(milliseconds: 1800),
-          child: AppButtons.buildMaterialButton(
-              onTap: () {}, buttonName: 'Read More'),
-        )
+        // FadeInUp(
+        //   duration: const Duration(milliseconds: 1800),
+        //   child: AppButtons.buildMaterialButton(
+        //       onTap: () {}, buttonName: 'Read More'),
+        // )
       ],
     );
   }
